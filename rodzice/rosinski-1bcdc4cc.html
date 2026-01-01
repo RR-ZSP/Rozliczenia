@@ -5,43 +5,101 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <title>RR – Rosiński</title>
 <style>
-body { font-family: Arial, sans-serif; margin: 20px; }
-h1, h2 { margin: 0 0 8px 0; }
-.muted { color: #666; font-size: 12px; }
-.card { border: 1px solid #ddd; border-radius: 10px; padding: 14px; margin: 12px 0; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.k { color: #666; font-size: 12px; margin-bottom: 3px; }
-.v { font-size: 16px; }
-.badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-weight: bold; font-size: 12px; }
-.ok { background: #45b9ac; }
-.warn { background: #67cbc1; }
-.bad { background: #f498bd; }
-ul { margin: 6px 0 0 18px; }
-code { font-family: Consolas, Menlo, monospace; }
+:root{--bg:#0b1220;--card:#0f1a2e;--card2:#0d1729;--text:#e9eef8;--muted:#a7b3c8;--line:rgba(255,255,255,.10);--ok:#2fd3b4;--warn:#ffcc66;--bad:#ff6b9a;--info:#5aa7ff;}
+html,body{background:linear-gradient(180deg,#071023 0%,#050b16 100%);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px 40px;}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;}
+.brand{font-weight:800;letter-spacing:.2px;}
+.time{color:var(--muted);font-size:13px;}
+.hero{background:radial-gradient(1200px 400px at 10% 0%,rgba(90,167,255,.25),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:18px;padding:18px 18px 14px;box-shadow:0 18px 60px rgba(0,0,0,.35);}
+.hrow{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;}
+h1{margin:0;font-size:26px;line-height:1.2;}
+.subtitle{margin-top:6px;color:var(--muted);font-size:14px;}
+.status{min-width:280px;flex:0 0 auto;border-radius:18px;padding:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);}
+.status .lbl{color:var(--muted);font-size:12px;margin-bottom:8px;letter-spacing:.28px;text-transform:uppercase;}
+.pill{display:flex;align-items:center;gap:12px;border-radius:16px;padding:16px 16px;font-weight:900;font-size:20px;line-height:1.1;box-shadow:0 14px 34px rgba(0,0,0,.35);}
+.pill .ico{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;font-size:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);}
+.pill.ok{background:linear-gradient(90deg,rgba(47,211,180,.28),rgba(47,211,180,.06));border:1px solid rgba(47,211,180,.55);box-shadow:0 16px 40px rgba(47,211,180,.14),0 14px 34px rgba(0,0,0,.35);}
+.pill.warn{background:linear-gradient(90deg,rgba(255,204,102,.28),rgba(255,204,102,.06));border:1px solid rgba(255,204,102,.55);box-shadow:0 16px 40px rgba(255,204,102,.14),0 14px 34px rgba(0,0,0,.35);}
+.pill.bad{background:linear-gradient(90deg,rgba(255,107,154,.28),rgba(255,107,154,.06));border:1px solid rgba(255,107,154,.60);box-shadow:0 16px 40px rgba(255,107,154,.16),0 14px 34px rgba(0,0,0,.35);}
+.pill.muted{background:linear-gradient(90deg,rgba(167,179,200,.20),rgba(167,179,200,.05));border:1px solid rgba(167,179,200,.30);}
+.grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px;}
+@media(min-width:820px){.grid{grid-template-columns:1fr 1fr;}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:18px;padding:16px;}
+.card h2{margin:0 0 10px 0;font-size:16px;letter-spacing:.2px;}
+.kv{display:grid;grid-template-columns:1fr;gap:10px;}
+.row{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;}
+.k{color:var(--muted);font-size:12px;margin-bottom:4px;}
+.v{font-size:18px;font-weight:780;}
+.note{color:var(--muted);font-size:13px;line-height:1.5;margin-top:10px;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:rgba(0,0,0,.25);padding:2px 8px;border-radius:10px;border:1px solid rgba(255,255,255,.10);}
+.muted{color:var(--muted);}
+.plist{margin:8px 0 0 18px;}
+.plist li{margin:6px 0;}
+.pmeta{color:var(--muted);font-size:13px;margin-left:6px;}
+.payinfo{margin-top:14px;border-radius:18px;padding:16px;border:1px solid rgba(90,167,255,.35);background:radial-gradient(900px 260px at 10% 0%,rgba(90,167,255,.28),transparent 60%),linear-gradient(180deg,rgba(90,167,255,.10),rgba(255,255,255,.02));}
+.payinfo h2{display:flex;align-items:center;gap:10px;margin:0 0 10px 0;font-size:16px;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:6px 10px;font-size:13px;}
+.iban{font-weight:900;letter-spacing:.8px;font-size:16px;display:block;margin-top:6px;}
+.warnline{margin-top:10px;color:#ffd1dc;font-size:13px;}
+.footer{margin-top:14px;color:var(--muted);font-size:12px;}
 </style>
 </head>
 <body>
-<p class='muted'>Strona informacyjna RR • wygenerowano: <b>2025-12-18 22:08</b></p>
+<div class='wrap'>
+<div class='top'>
+<div class='brand'>Rada Rodziców • raport dla rodziców</div>
+<div class='time'>Wygenerowano: <b>2025-12-31 22:08</b></div>
+</div>
+<div class='hero'>
+<div class='hrow'>
+<div>
 <h1>Rodzina: Rosiński</h1>
-<p><span class='badge ok'>OK (rozliczone)</span></p>
+<div class='subtitle'>Strona informacyjna dot. rozliczeń RR (na podstawie raportu bankowego).</div>
+</div>
+<div class='status'>
+<div class='lbl'>Status rozliczenia</div>
+<div class='pill ok'><div class='ico'>✓</div><div>OK (rozliczone)</div></div>
+</div>
+</div>
+<div class='grid'>
 <div class='card'>
 <h2>Dzieci</h2>
-<p>Paweł (1A)</p>
+<div class='row'><div class='v' style='font-size:16px;font-weight:700;'>Paweł (1A)</div></div>
+<div class='note'>Jeśli dane są niepełne: sprawdź tytuł przelewu (imię/nazwisko dziecka, klasa/grupa, „RR”).</div>
 </div>
 <div class='card'>
 <h2>Podsumowanie</h2>
-<div class='grid'>
-<div><div class='k'>Oczekiwana suma</div><div class='v'><b>125.0</b></div></div>
-<div><div class='k'>Wykryta suma wpłat</div><div class='v'><b>125.0</b></div></div>
-<div><div class='k'>Różnica</div><div class='v'><b>0.0</b></div></div>
-<div><div class='k'>Uwagi</div><div class='v' style='font-size:13px;'>Jeśli uważasz, że dane są niepełne: sprawdź tytuł przelewu (imię/nazwisko dziecka, klasa/grupa, „RR”).</div></div>
+<div class='kv'>
+<div class='row'><div class='k'>Oczekiwana suma</div><div class='v'>125.0 PLN</div></div>
+<div class='row'><div class='k'>Wykryta suma wpłat</div><div class='v'>125.0 PLN</div></div>
+<div class='row'><div class='k'>Różnica</div><div class='v'>0.0 PLN</div></div>
 </div>
 </div>
-<div class='card'>
+</div>
+</div>
+<div class='card' style='margin-top:14px;'>
 <h2>Wpłaty RR</h2>
-<ul><li><code>TR-008D349C47</code> – 125.00 (2025.09.23)</li></ul>
-<p class='muted'>Dane pochodzą z raportu bankowego (ułatwiają identyfikację operacji).</p>
+<ul class='plist'><li><code>TR-008D349C47</code> <span class='pmeta'>— 125.00 PLN</span> <span class='pmeta'>(2025.09.23)</span></li></ul>
+<div class='note'>Dane pochodzą z raportu bankowego (ułatwiają identyfikację operacji).</div>
 </div>
-<p class='muted'>Wersja informacyjna dla rodziców.</p>
+<div class='payinfo'>
+<h2>💳 Informacje dotyczące wpłat na Radę Rodziców</h2>
+<div class='badge'><b>Dopisek obowiązkowy:</b> Wpłata na Radę Rodziców</div>
+<div class='note'>Dla bezpieczeństwa rozliczeń zalecamy dopisek dokładnie jak wyżej (ew. „RR” jako skrót).</div>
+<div class='grid' style='margin-top:12px;'>
+<div class='card' style='background:rgba(0,0,0,.16);'>
+<h2>Przedszkole — numer konta</h2>
+<span class='iban'>16 8436 0003 0000 0000 1456 0002</span>
+</div>
+<div class='card' style='background:rgba(0,0,0,.16);'>
+<h2>Szkoła — numer konta</h2>
+<span class='iban'>24 8436 0003 0000 0100 1456 0003</span>
+</div>
+</div>
+<div class='warnline'><b>Uwaga:</b> brak dopisku może utrudnić przypisanie wpłaty do rodziny.</div>
+</div>
+<div class='footer'>Wersja informacyjna dla rodziców.</div>
+</div>
 </body>
 </html>
