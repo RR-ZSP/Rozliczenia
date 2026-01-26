@@ -1,0 +1,5 @@
+Korzystaj bezpieczniej z py - zachowywane sesje z ID
+
+Base URL : https://rr-zsp.github.io/Rozliczenia/
+
+Salt : 2025
