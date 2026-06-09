@@ -1,11 +1,11 @@
 KLASA 1A
 Dragon Maria 
-Franciszok Zofia
+Franciszok Zofia | FAM:Franciszok
 Jałocha Ewa 
 Kampe Ignacy 
 Kempski Wiktor
 Nisowska Agata
-Palka Kacper 
+Palka Kacper | FAM: PALKA_KACPER
 Pierzchała Olivia
 Rosiński Paweł 
 Schaefer Laura 
@@ -20,7 +20,7 @@ Dobrowolska Wiktoria
 Gwóźdź Jagoda 
 Jaromin Aleksander
 Kocielski Tomasz
-Kucharek Hanna 
+Kucharek Hanna  | FAM:KUCHAREK_HANNA
 Kujawa Jerzy 
 Moczkowski Dawid
 Paśnik Maja 
@@ -132,7 +132,7 @@ Bysiak	Mateusz
 Czempa	Emilia
 Ditman	Marcel
 Dobrowolska	Judyta
-Franciszok	Franciszek
+Franciszok	Franciszek | FAM:Franciszok
 Grzesiczek	Alan
 Jałocha	Laura
 Jastrzębska	Antonina
@@ -140,7 +140,7 @@ Klimczak	Liliana
 Korcz	Blanka
 Kościelniak	Mikołaj
 Liszka	Jeremi
-Palka	Wiktor
+Palka	Wiktor | FAM: PALKA_WIKTOR
 Perdek	Jakub
 Przybyła	Zofia
 Sikora	Alicja
@@ -160,7 +160,7 @@ Horyń	Matylda
 Kempski	Sergiusz
 Kocielska	Zuzanna
 Korusiewicz	Borys
-Kucharek	Henryk
+Kucharek	Henryk  | FAM:KUCHAREK_HENRYK
 Kuliś	Franciszek
 Migdałek	Kaja
 Modlińska	Anna
@@ -177,3 +177,5 @@ Tłok	Matylda
 Uszok	Jakub
 Wiciński	Maciej
 Więckowska	Iga
+Grupa testowa
+Kowalski Jan
